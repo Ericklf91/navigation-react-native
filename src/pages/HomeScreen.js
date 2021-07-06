@@ -5,20 +5,13 @@ import { useNavigation } from '@react-navigation/native';
 const HomeScreen = () => {
     const navigation = useNavigation();
 
-    const [name, setName] = useState('');
-
     const handleSendButton = () => {
-        navigation.navigate('Cadastro', {name: name});
+        navigation.navigate('Cadastro');
     }
 
     return (
         <View style={styles.container}>
-            <Text>Qual seu nome?</Text>
-            <TextInput
-                style={styles.input}
-                value={name}
-                onChangeText={t => setName(t)}
-            />
+            <Text>Home Screen</Text>
             <Button title="Enviar" onPress={handleSendButton} />
         </View>
     );
@@ -29,13 +22,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
-    },
-    input: {
-        width: 250,
-        padding: 10,
-        fontSize: 15,
-        backgroundColor: '#DDD'
-    }
+    }    
 });
 
 export default HomeScreen;
