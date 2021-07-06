@@ -8,7 +8,7 @@ const HomeScreen = () => {
     const [name, setName] = useState('');
 
     const handleSendButton = () => {
-        navigation.navigate('Sobre', {name: name});
+        navigation.navigate('Cadastro', {name: name});
     }
 
     return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-const SobreScreen = () => {
+const CadastroScreen = () => {
     const navigation = useNavigation();
     const route = useRoute();
 
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SobreScreen;
+export default CadastroScreen;
