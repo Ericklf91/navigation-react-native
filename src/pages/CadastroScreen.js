@@ -11,9 +11,9 @@ const CadastroScreen = () => {
     const [dataCadastro, setDataCadastro] = useState('');
     const [valorUnitario, setValorUnitario] = useState('');
 
-    const salvarProduto = () => {
-        inserirProduto(nome, descricao, qtdEstoque, valorUnitario);
-        alert('Produto inserido');
+    const salvarProduto = () => {    
+            inserirProduto(nome, descricao, qtdEstoque, valorUnitario);
+            alert('Produto inserido');
     }
 
     const handleSendButton = () => {
@@ -37,9 +37,9 @@ const CadastroScreen = () => {
             <Text>Quantidade:</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Data do cadastro..."
-                value={dataCadastro}
-                onChangeText={t => setDataCadastro(t)} />
+                placeholder="Quantidade em estoque..."
+                value={qtdEstoque}
+                onChangeText={t => setQtdEstoque(t)} />
             <Text>Valor unitário:</Text>
             <TextInput
                 style={styles.input}
