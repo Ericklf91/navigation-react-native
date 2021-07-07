@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { inserirProduto } from '../data/produto/produto_db';
 
 const CadastroScreen = () => {
     const navigation = useNavigation();
@@ -9,6 +10,11 @@ const CadastroScreen = () => {
     const [qtdEstoque, setQtdEstoque] = useState('');
     const [dataCadastro, setDataCadastro] = useState('');
     const [valorUnitario, setValorUnitario] = useState('');
+
+    const salvarProduto = () => {
+        inserirProduto(nome, descricao, qtdEstoque, valorUnitario);
+        alert('Produto inserido');
+    }
 
     const handleSendButton = () => {
         navigation.navigate('Produtos');
@@ -31,12 +37,6 @@ const CadastroScreen = () => {
             <Text>Quantidade:</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Quantidade..."
-                value={qtdEstoque}
-                onChangeText={t => setQtdEstoque(t)} />
-            <Text>Data do cadastro:</Text>
-            <TextInput
-                style={styles.input}
                 placeholder="Data do cadastro..."
                 value={dataCadastro}
                 onChangeText={t => setDataCadastro(t)} />
@@ -46,6 +46,7 @@ const CadastroScreen = () => {
                 placeholder="Valor unitário..."
                 value={valorUnitario}
                 onChangeText={t => setValorUnitario(t)} />
+            <Button title="Enviar" onPress={salvarProduto} />
             <Text>Veja nossos produtos</Text>
             <Button title="Exibir" onPress={handleSendButton} />
         </View>
