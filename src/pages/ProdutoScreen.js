@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import { TextInput, Text, StyleSheet, FlatList, SafeAreaView, View, TouchableOpacity, Button } from 'react-native';
 import { listarProdutos, deletarProduto, atualizarProduto } from '../data/produto/produto_db';
 
+
 const ProdutoScreen = () => {
     const [produtos, setProdutos] = useState(listarProdutos());
+    const [id, setId] = useState('');
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [qtdEstoque, setQtdEstoque] = useState('');
     const [valorUnitario, setValorUnitario] = useState('');
     const [atualizar, setAtualizar] = useState(false);
+
+    const handleAtualizar = (idProd) => {
+        setAtualizar(!atualizar);
+        setId(idProd);
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <Text>Produtos:</Text>
@@ -24,10 +32,10 @@ const ProdutoScreen = () => {
                             <Text>Quantidade em estoque: {item.produto_quantidade}</Text>
                             <Text>Valor: R${item.produto_valor}</Text>
                             <TouchableOpacity
-                                onPress={() => setAtualizar(!atualizar)}>
+                                onPress={() => handleAtualizar(item.produto_id)}>
                                 <Text>Atualizar</Text>
                             </TouchableOpacity>
-                            {atualizar &&
+                            {atualizar && item.produto_id === id &&
                                 <View>
                                     <Text>Nome:</Text>
                                     <TextInput style={styles.input} value={nome}
