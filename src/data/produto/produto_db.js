@@ -31,7 +31,7 @@ const inserirProduto = (nome, descricao, quantidade, valor) => {
    
     realm_produto.write(() => {
         const prod = realm_produto.create('Produto', {
-            produto_id: proximoId,
+            produto_id: id,
             produto_nome: nome,
             produto_descricao: descricao,
             produto_quantidade: parseInt(quantidade),
