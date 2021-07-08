@@ -44,14 +44,12 @@ const inserirProduto = (nome, descricao, quantidade, valor) => {
 const atualizarProduto = (id, nome, descricao, quantidade, valor) => {
 
     realm_produto.write(() => {
-        //const ID = id - 1;
-        //const obj = realm_produto.objects('Produto');
-        const obj = realm_produto.create(realm_produto.objectForPrimaryKey('Produto', id));
+        const obj = realm_produto.objectForPrimaryKey('Produto', id);
 
-        obj[ID].produto_nome = nome;
-        obj[ID].produto_descricao = descricao;
-        obj[ID].produto_quantidade = parseInt(quantidade);
-        obj[ID].produto_valor = parseFloat(valor);
+        obj.produto_nome = nome;
+        obj.produto_descricao = descricao;
+        obj.produto_quantidade = parseInt(quantidade);
+        obj.produto_valor = parseFloat(valor);
     });
     Alert.alert('Produto atualizado');
 }
@@ -61,11 +59,6 @@ const deletarProduto = (id) => {
     realm_produto.write(() => {
         realm_produto.delete(realm_produto.objectForPrimaryKey('Produto', id));
       });
-    /*realm_produto.write(() => {
-        const ID = id - 1;
-
-        realm_produto.delete(realm_produto.objects('Produto')[ID]);
-    });*/
     Alert.alert('Produto deletado');
 }
 
