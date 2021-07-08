@@ -8,12 +8,14 @@ const CadastroScreen = () => {
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [qtdEstoque, setQtdEstoque] = useState('');
-    const [dataCadastro, setDataCadastro] = useState('');
     const [valorUnitario, setValorUnitario] = useState('');
 
-    const salvarProduto = () => {    
+    const salvarProduto = () => {
+        if (nome === '' || qtdEstoque < 0 || valorUnitario <= 0) {
+            alert('Dados inválidos!');
+        } else {
             inserirProduto(nome, descricao, qtdEstoque, valorUnitario);
-            alert('Produto inserido');
+        }
     }
 
     const handleSendButton = () => {
