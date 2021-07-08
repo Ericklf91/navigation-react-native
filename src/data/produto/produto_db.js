@@ -24,14 +24,15 @@ const listarProdutos = () => {
 
 const inserirProduto = (nome, descricao, quantidade, valor) => {
 
-    /*const ultimoId = realm_produto.objects('Produto').sorted('produto_id', true)[0];
-    const maiorId = ultimoId == null ? 1 : ultimoId.produto_id;
-    const proximoId = maiorId != 1 ? maiorId + 1 : proximoId + 1;*/
-    const id = realm_produto.objects('Produto').length + 1;
+    const ultimoId = realm_produto.objects('Produto').sorted('produto_id', true)[0];
+    const maiorId = ultimoId == null ? 0 : ultimoId.produto_id;
+    const proximoId = maiorId == null ? 1 : maiorId + 1;
+
+    //const id = realm_produto.objects('Produto').length + 1;
    
     realm_produto.write(() => {
         const prod = realm_produto.create('Produto', {
-            produto_id: id,
+            produto_id: proximoId,
             produto_nome: nome,
             produto_descricao: descricao,
             produto_quantidade: parseInt(quantidade),

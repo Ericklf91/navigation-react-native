@@ -33,7 +33,7 @@ const ProdutoScreen = () => {
                             <Text>Valor: R${item.produto_valor}</Text>
                             <TouchableOpacity
                                 onPress={() => handleAtualizar(item.produto_id)}>
-                                <Text>Atualizar</Text>
+                                <Text style={{color: 'green'}}>Atualizar</Text>
                             </TouchableOpacity>
                             {atualizar && item.produto_id === id &&
                                 <View>
